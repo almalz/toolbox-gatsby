@@ -1,9 +1,13 @@
 import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
+import styled from 'styled-components'
+import tw from 'tailwind.macro'
 
-import ToolCard from './toolCard'
+import ToolCard from './ToolCard'
 
-
+const ToolsList = styled('div')`
+  ${tw`p-4 flex flex-row`}
+`
 
 export default () => {
 
@@ -33,7 +37,7 @@ export default () => {
   const tools = data.allStrapiTool.edges
 
   return (
-    <div>{tools.map(tool => <ToolCard tool={tool.node} key={tool.node.id} icon={tool.node.icon} />)}</div>
+    <ToolsList>{tools.map(tool => <ToolCard tool={tool.node} key={tool.node.id} icon={tool.node.icon} />)}</ToolsList>
   )
 }
 

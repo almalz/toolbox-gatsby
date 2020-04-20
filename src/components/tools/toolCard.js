@@ -7,10 +7,6 @@ const Card = styled('div')`
  ${tw`max-w-sm rounded overflow-hidden shadow-lg`};
 `
 
-const CardImg = styled('img')`
- ${tw`w-full`};
-`
-
 const CardContainer = styled('div')`
  ${tw`px-6 py-4`};
 `
@@ -24,15 +20,13 @@ const CardDescription = styled('p')`
 `
 
 export default (props) => (
-  < Card >
-    {console.log('PROPS: ', props)}
-
+  <Card>
     {props.tool.icon && <Img fixed={props.tool.icon.childImageSharp.fixed} alt="Notion.so logo" />}
-    < CardContainer >
+    <CardContainer>
       <CardTitle>{props.tool.name}</CardTitle>
       <CardDescription>
         {props.tool.description}
       </CardDescription>
-    </CardContainer >
-  </Card >
+    </CardContainer>
+  </Card>
 )
