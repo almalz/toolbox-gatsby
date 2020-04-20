@@ -9,22 +9,31 @@ export default () => {
 
   const data = useStaticQuery(
     graphql`
-       query {
-    allStrapiTool {
-      nodes {
-        name
-        id
+      query allStrapiTool{
+        allStrapiTool {
+          edges {
+            node {
+              id
+              name
+              description
+              icon {
+                  childImageSharp {
+                    fixed(width: 52, height: 52) {
+                      ...GatsbyImageSharpFixed
+                    }
+                  }
+                }
+            }
+          }
+        }
       }
-    }
-  }`
+    `
   )
 
-  const tools = data.allStrapiTool.nodes
-
-  console.log('TOOLS :', tools)
+  const tools = data.allStrapiTool.edges
 
   return (
-    <div>{tools.map(tool => <ToolCard tool={tool} key={tool.id} />)}</div>
+    <div>{tools.map(tool => <ToolCard tool={tool.node} key={tool.node.id} icon={tool.node.icon} />)}</div>
   )
 }
 
