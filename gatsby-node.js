@@ -1,7 +1,56 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(
+    ` query {
+        allStrapiTool {
+          edges {
+            node {
+              id
+              name
+              description
+              icon {
+                id
+              }
+              page {
+                id
+                introduction
+                personnal_use
+                slug
+              }
+              category {
+                id
+                name
+              }
+              alternative_tools {
+                id
+                purpose
+                tool {
+                  category
+                  id
+                  description
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
 
-// You can delete this file if you're not using it
+
+  if (result.errors) {
+    throw result.errors
+  }
+
+  const tools = result.data.allStrapiTool.edges
+
+  tools.forEach(tool => {
+    createPage({
+      path: `/tool/${tool.node.page.slug}`,
+      component: require.resolve("./src/templates/tool.js"),
+      context: {
+        tool: tool.node
+      },
+    })
+  })
+}
