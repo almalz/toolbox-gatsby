@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               name
+              strapiId
               page {
                 slug
               }
@@ -27,7 +28,8 @@ exports.createPages = async ({ graphql, actions }) => {
   tools.forEach(tool => {
     createPage({
       path: `/tool/${tool.node.page.slug}`,
-      component: require.resolve("./src/templates/tool.js"),
+      component: require.resolve("./src/templates/toolPage.js"),
+      context: { id: tool.node.strapiId }
     })
   })
 }

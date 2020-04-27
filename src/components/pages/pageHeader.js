@@ -40,7 +40,7 @@ export default (props) => {
     <PageHeaderContainer>
       <PageTopContainer>
         <PageHeaderIconContainer>
-          <Img fixed={tool.icon.childImageSharp.fixed} alt={`${tool.name} icon`} />
+          {tool.icon && <Img fixed={tool.icon.childImageSharp.fixed} alt={`${tool.name} icon`} />}
         </PageHeaderIconContainer>
         <LinkToTheWebsite href={tool.source_url} target="_blank"> Go to the website </LinkToTheWebsite>
       </PageTopContainer>

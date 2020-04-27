@@ -5,8 +5,8 @@ import tw from 'tailwind.macro'
 import MarkdownView from 'react-showdown';
 
 
-import Layout from './../components/layout'
-import PageHeader from './../components/pages/pageHeader'
+import Layout from '../components/layout'
+import PageHeader from '../components/pages/pageHeader'
 
 const PageContainer = styled('div')`
 ${tw`m-auto py-12 px-40`}
@@ -26,6 +26,7 @@ ${ tw`font-light text-lg p-2 m-2 rounded-lg hover:bg-gray-200`}
 
 export default ({ data }) => {
   const tool = data.strapiTool
+  console.log('Page: ', tool)
   return (
     <Layout>
       <PageContainer>
@@ -49,8 +50,8 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query {
-    strapiTool(strapiId: {eq: 1}) {
+  query($id: Int) {
+    strapiTool(strapiId: {eq: $id}) {
       id
       name
       description
