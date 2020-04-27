@@ -4,11 +4,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import MainContainer from "../components/containers/MainContainer"
 
-const IndexPage = () => (
+export default ({ location }) => (
   <Layout>
-    <SEO title="Home" />
-    <MainContainer />
+    <SEO title="My Toolbox" />
+    <MainContainer location={location} />
   </Layout>
 )
 
-export default IndexPage

@@ -5,9 +5,8 @@ import tw from 'tailwind.macro'
 import ToolCard from './ToolCard'
 
 const ToolsList = styled('div')`
-  ${tw`w-3/4p-4 flex flex-row`}
+  ${tw`py-4 flex flex-wrap overflow-hidden`}
 `
-
 
 export default (props) => {
 

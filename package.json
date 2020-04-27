@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "almalz-toolbox",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Personnal toolbox built on Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Alexis Malzieu",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
@@ -22,6 +22,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-showdown": "^2.0.3",
+    "showdown": "^1.9.1",
     "styled-components": "^5.1.0",
     "tailwind.macro": "^1.0.0-alpha.10",
     "tailwindcss": "^1.2.0",

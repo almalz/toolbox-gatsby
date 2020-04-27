@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import tw from 'tailwind.macro'
 
 const Header = styled('div')`
-  ${tw`bg-blue-500`}
+  ${tw`py-2 px-12 h-10 shadow-lg`}
 `
 
 export default ({ siteTitle }) => (

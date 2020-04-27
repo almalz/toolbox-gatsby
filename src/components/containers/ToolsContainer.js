@@ -5,12 +5,17 @@ import tw from 'tailwind.macro'
 
 import ToolsList from '../tools/ToolsList'
 import CategoryList from './../categories/CategoryList'
+import SearchFiled from '../tools/SearchField'
 
 const ToolsContainer = styled('div')`
   ${tw`flex mx-4`}
 `
 
-export default () => {
+const RightContainer = styled('div')`
+  ${tw`w-3/4 p-4`}
+`
+
+export default (props) => {
 
   const data = useStaticQuery(
     graphql`
@@ -32,6 +37,9 @@ export default () => {
                   id
                   name
                 }
+              page {
+                slug
+              }
             }
           }
         }
@@ -41,6 +49,7 @@ export default () => {
               id
               name
               strapiId
+              label
             }
           }
         }
@@ -51,28 +60,45 @@ export default () => {
   const allTools = data.allStrapiTool.edges
   const allCategories = data.allStrapiCategory.edges
 
-  const [selectedCategory, setSelectedCategory] = useState()
+
+  const [selectedCategory, setSelectedCategory] = useState(props.location.state ? props.location.state.passedCategory : undefined)
+  const [searchInput, setSearchInput] = useState('')
 
   const handleClickCategory = category => {
     setSelectedCategory(category)
   }
 
-  const filterTools = (tools) => {
-
-    if (selectedCategory) {
-      const result = tools.filter(tool => tool.node.category.id === selectedCategory.strapiId)
-      return result
-    }
-    return tools
+  const handleSeachTyping = event => {
+    setSearchInput(event.target.value)
   }
 
+  const filterTools = (tools) => {
+    let result = [...tools]
 
-  console.log(allTools)
+    if (searchInput) {
+      result = tools.filter(tool => tool.node.name.toUpperCase().includes(searchInput.toUpperCase()))
+    }
+
+    if (selectedCategory) {
+
+      if (selectedCategory.name === 'all') {
+        return result
+      }
+
+      result = tools.filter(tool => tool.node.category.name === selectedCategory.name)
+      return result
+    }
+
+    return result
+  }
 
   return (
     <ToolsContainer>
       <CategoryList categories={allCategories} handleClickCategory={handleClickCategory} />
-      <ToolsList tools={filterTools(allTools)} />
+      <RightContainer>
+        <SearchFiled handleSeachTyping={handleSeachTyping} />
+        <ToolsList tools={filterTools(allTools)} />
+      </RightContainer>
     </ToolsContainer>
   )
 }

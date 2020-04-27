@@ -8,8 +8,8 @@ const MainContainer = styled('div')`
   ${tw`m-auto p-8 px-8`}
 `
 
-export default () => (
+export default ({ location }) => (
   <MainContainer>
-    <ToolsContainer />
+    <ToolsContainer location={location} />
   </MainContainer>
 )
