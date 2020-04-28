@@ -1,12 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import tw from 'tailwind.macro'
+import tw from 'twin.macro'
 
 import ToolCard from './ToolCard'
 
-const ToolsList = styled('div')`
-  ${tw`py-4 flex flex-wrap overflow-hidden`}
-`
+const ToolsList = styled.div([tw`py-4 flex flex-wrap overflow-hidden`])
 
 export default (props) => {
 

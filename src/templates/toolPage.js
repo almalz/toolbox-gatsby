@@ -1,28 +1,24 @@
 import React from "react"
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import tw from 'tailwind.macro'
+import tw from 'twin.macro'
 import MarkdownView from 'react-showdown';
 
 
 import Layout from '../components/layout'
 import PageHeader from '../components/pages/pageHeader'
 
-const PageContainer = styled('div')`
-${tw`m-auto py-12 px-40`}
-`
+const PageContainer = styled.div([tw`m-auto py-12 px-40`])
 
-const PageSulbitle = styled('h2')`
-  ${tw`m-auto p-2 m-2 text-md font-bold`}
-`
 
-const PageBody = styled('p')`
-  ${tw`m-auto p-2 m-2 text-page font-normal`}
-`
+const PageSulbitle = styled.h2([tw`m-auto p-2 m-2 text-lg font-bold`])
 
-const PreviousLink = styled('button')`
-${ tw`font-light text-lg p-2 m-2 rounded-lg hover:bg-gray-200`}
-`
+
+const PageBody = styled.p([tw`m-auto p-2 m-2 text-base font-normal`])
+
+
+const PreviousLink = styled.button([tw`font-light text-lg p-2 m-2 rounded-lg hover:bg-gray-200`])
+
 
 export default ({ data }) => {
   const tool = data.strapiTool

@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
-import tw from 'tailwind.macro'
+import tw from 'twin.macro'
 
 import ToolsList from '../tools/ToolsList'
 import CategoryList from './../categories/CategoryList'
 import SearchFiled from '../tools/SearchField'
 
-const ToolsContainer = styled('div')`
-  ${tw`flex mx-4`}
-`
+const ToolsContainer = styled.div([tw`flex mx-4`])
 
-const RightContainer = styled('div')`
-  ${tw`w-3/4 p-4`}
-`
+const RightContainer = styled.div([tw`w-3/4 p-4`])
 
 export default (props) => {
 

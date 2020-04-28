@@ -2,11 +2,9 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components'
-import tw from 'tailwind.macro'
+import tw from 'twin.macro'
 
-const Header = styled('div')`
-  ${tw`py-2 px-12 h-10 shadow-lg`}
-`
+const Header = styled.div([tw`py-2 px-12 h-10 shadow-lg`])
 
 export default ({ siteTitle }) => (
   <Header >
