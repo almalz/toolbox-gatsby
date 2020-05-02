@@ -46,7 +46,7 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: Int!) {
     strapiTool(strapiId: {eq: $id}) {
       id
       name
@@ -62,7 +62,7 @@ export const query = graphql`
       page {
         id
         introduction
-        personnal_use
+        personal_use
         slug
       }
       category {

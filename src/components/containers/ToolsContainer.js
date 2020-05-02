@@ -16,7 +16,7 @@ export default (props) => {
   const data = useStaticQuery(
     graphql`
       query data {
-        allStrapiTool {
+        allStrapiTool (sort: {fields: name}){
           edges {
             node {
               id
